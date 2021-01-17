@@ -10,31 +10,52 @@ class DroppingElement {
         this.lastY;
         this.arrived = false;
 
+        this.element = "";
+        this.elementSet = false;
+
         this.squareGreen = document.getElementById("SquareGreen");
     }
 
     draw(ctx, interpolationPercentage) {
         let y = this.lastY + (this.y - this.lastY) * interpolationPercentage;
-        switch (this.colorID) {
-            case 1:
-                ctx.fillStyle = "#ff0000";
-                break;
-            case 2:
-                ctx.fillStyle = "#0000ff";
-                break;
-            case 3:
-                ctx.fillStyle = "#ff00ff";
-                break;
-            case 4:
-                ctx.fillStyle = "#ffff00";
-                break;
-            case 5:
-                ctx.fillStyle = "#00ffff";
-                break;
-            case 6:
-                ctx.fillStyle = "#00ff00";
-                break;
+
+        if (!this.elementSet) {
+            switch (this.objectID) {
+                case 1:
+                    this.element += "Cube_";
+                    break;
+                case 2:
+                    this.element += "Cross_";
+                    break;
+                case 3:
+                    this.element += "Pyramid_";
+                    break;
+                case 4:
+                    this.element += "Ball_";
+                    break;
+            }
+            switch (this.colorID) {
+                case 1:
+                    this.element += "Blue";
+                    break;
+                case 2:
+                    this.element += "Yellow";
+                    break;
+                case 3:
+                    this.element += "Green";
+                    break;
+                case 4:
+                    this.element += "Purple";
+                    break;
+                case 5:
+                    this.element += "Red";
+                    break;
+            }
         }
+        this.elementSet = true;
+        console.log(this.element)
+        ctx.drawImage(document.getElementById(this.element), this.x, y, 75, 75);
+
         /*
                 switch (this.objectID) {
                     case 1:
@@ -173,7 +194,7 @@ class DroppingElement {
         */
 
         //ctx.fillRect(this.x, y, this.objectID * 5, this.objectID * 5);
-        ctx.drawImage(this.squareGreen, this.x, y);
+        //ctx.drawImage(this.squareGreen, this.x, y);
     }
 
     update(delta) {

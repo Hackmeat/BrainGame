@@ -13,7 +13,9 @@ class GameScreen {
 
         this.countdown = 3;
 
-        //
+        //#
+        this.objectAmount = 4;
+        this.colorAmount = 5;
         this.elementCreated = false;
         this.elementArray = [];
         this.elementAmount = 2;
@@ -95,8 +97,8 @@ class GameScreen {
         for (let i = amount; i > 0; i--) {
             let x = Math.floor(Math.random() * (this.gameWidth / 3 - 30)) + this.gameWidth / 3;
             let y = -(Math.floor(Math.random() * 200));
-            let objectID = Math.floor(Math.random() * 6) + 1;
-            let colorID = Math.floor(Math.random() * 6) + 1;
+            let objectID = Math.floor(Math.random() * this.objectAmount) + 1;
+            let colorID = Math.floor(Math.random() * this.colorAmount) + 1;
             this.elementArray.push(new DroppingElement(x, y, objectID, colorID, 2));
         }
         this.elementCreated = true;
