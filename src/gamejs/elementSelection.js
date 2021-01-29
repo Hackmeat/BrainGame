@@ -16,19 +16,29 @@ class ElementSelection {
         this.objectCompareID, this.colorCompareID;
 
         this.selectionArray = [];
+
+        this.objectAmount = 4;
+        this.colorAmount = 5;
     }
 
     draw(ctx, interpolationPercentage) {
-        this.drawSelectionTab(ctx, this.gameWidth / 2, this.gameHeight / 2, 6);
-        this.drawSelectionTab(ctx, this.gameWidth / 2, this.gameHeight / 2 + 200, 6);
+        this.drawSelectionTab(ctx, this.gameWidth / 2, this.gameHeight / 2, this.objectAmount);
+        this.drawObjectSlection(ctx, this.gameWidth / 2, this.gameHeight / 2, this.objectAmount);
+
+        this.drawSelectionTab(ctx, this.gameWidth / 2, this.gameHeight / 2 + 200, this.colorAmount);
+        if (this.clickOne) {
+            this.drawColorSelection(ctx, this.gameWidth / 2, this.gameHeight / 2 + 200, this.colorAmount)
+        }
         this.drawSelectionTab(ctx, this.gameWidth / 2, this.gameHeight / 2 - 300, this.gameScreen.elementArray.length);
+
+
     }
 
     update(delta) {
         if (!this.clickOne) {
-            this.hoverDetectionSelectionTab(this.gameWidth / 2, this.gameHeight / 2, 6);
+            this.hoverDetectionSelectionTab(this.gameWidth / 2, this.gameHeight / 2, this.objectAmount);
         } else if (!this.clickTwo) {
-            this.hoverDetectionSelectionTab(this.gameWidth / 2, this.gameHeight / 2 + 200, 6);
+            this.hoverDetectionSelectionTab(this.gameWidth / 2, this.gameHeight / 2 + 200, this.colorAmount);
         } else if (this.objectCompareID > 0 && this.colorCompareID > 0) {
             this.compareID(this.objectCompareID, this.colorCompareID);
         }
@@ -46,7 +56,72 @@ class ElementSelection {
         }
     }
 
-    drawObjectSlection(ctx) {
+    drawObjectSlection(ctx, x, y, amount) {
+        let size = 100;
+        let element = "";
+        x -= amount / 2 * size;
+        for (let i = amount; i > 0; i--) {
+            switch (i) {
+                case 1:
+                    element = "Cube_none";
+                    break;
+                case 2:
+                    element = "Cross_none";
+                    break;
+                case 3:
+                    element = "Pyramid_none";
+                    break;
+                case 4:
+                    element = "Ball_none";
+                    break;
+            }
+
+            ctx.drawImage(document.getElementById(element), x, y, size, size);
+            x += size;
+        }
+    }
+
+    drawColorSelection(ctx, x, y, amount) {
+        let object = "";
+        let element = "";
+        let size = 100;
+        x -= amount / 2 * size;
+        switch (this.objectCompareID) {
+            case 1:
+                object = "Cube_";
+                break;
+            case 2:
+                object = "Cross_";
+                break;
+            case 3:
+                object = "Pyramid_";
+                break;
+            case 4:
+                object = "Ball_";
+                break;
+        }
+        for (let i = amount; i > 0; i--) {
+            switch (i) {
+                case 1:
+                    element = object + "Blue";
+                    break;
+                case 2:
+                    element = object + "Yellow";
+                    break;
+                case 3:
+                    element = object + "Green";
+                    break;
+                case 4:
+                    element = object + "Purple";
+                    break;
+                case 5:
+                    element = object + "Red";
+                    break;
+            }
+            ctx.drawImage(document.getElementById(element), x, y, size, size);
+            x += size;
+        }
+
 
     }
 
@@ -88,6 +163,7 @@ class ElementSelection {
             }
         }
         if (!found) {
+            console.log(objectID, colorID)
             this.gameOver = true;
             console.log("Game Over")
         }

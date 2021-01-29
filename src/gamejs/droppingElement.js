@@ -53,7 +53,6 @@ class DroppingElement {
             }
         }
         this.elementSet = true;
-        console.log(this.element)
         ctx.drawImage(document.getElementById(this.element), this.x, y, 75, 75);
 
         /*
