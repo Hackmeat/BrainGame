@@ -1,5 +1,7 @@
+//A bit more advanced gameloop, rendering the highest amount of fps but running with the same speed on all displays. Got it from the internet long time ago.
+
 /*
- * A main loop useful for games and other animated applications.
+ * A main loop useful for games and other animated applications. 
  */
 (function(root) {
 

@@ -22,6 +22,7 @@ class ElementSelection {
     }
 
     draw(ctx, interpolationPercentage) {
+        //Drawing the two tabs to select the itmes
         this.drawSelectionTab(ctx, this.gameWidth / 2, this.gameHeight / 2, this.objectAmount);
         this.drawObjectSelection(ctx, this.gameWidth / 2, this.gameHeight / 2, this.objectAmount);
 
@@ -29,12 +30,10 @@ class ElementSelection {
         if (this.clickOne) {
             this.drawColorSelection(ctx, this.gameWidth / 2, this.gameHeight / 2 + 200, this.colorAmount)
         }
-        this.drawSelectionTab(ctx, this.gameWidth / 2, this.gameHeight / 2 - 300, this.gameScreen.elementArray.length);
-
-
     }
 
     update(delta) {
+        //Hover and click detection for the selction tabs
         if (!this.clickOne) {
             this.hoverDetectionSelectionTab(this.gameWidth / 2, this.gameHeight / 2, this.objectAmount);
         } else if (!this.clickTwo) {
@@ -44,7 +43,7 @@ class ElementSelection {
         }
     }
 
-
+    //Resizable seletion tab
     drawSelectionTab(ctx, x, y, amount) {
         let size = 100;
         x -= amount / 2 * size;
@@ -56,6 +55,7 @@ class ElementSelection {
         }
     }
 
+    //Resizable object tab with content
     drawObjectSelection(ctx, x, y, amount) {
         let size = 100;
         let element = "";
@@ -81,6 +81,7 @@ class ElementSelection {
         }
     }
 
+    //Checks which item was selected and replys on it with the object in all colors in the tab below
     drawColorSelection(ctx, x, y, amount) {
         let object = "";
         let element = "";
@@ -125,6 +126,7 @@ class ElementSelection {
 
     }
 
+    //Detects if the mouse is on one of the squares from the selction tab when the mouse has been clicked
     hoverDetectionSelectionTab(x, y, amount) {
         let mouseX = this.eventHandler.mouseX;
         let mouseY = this.eventHandler.mouseY;
@@ -149,6 +151,7 @@ class ElementSelection {
         }
     }
 
+    //Compares if the selected color and object are the ones falling down in the last round
     compareID(objectID, colorID) {
         let found = false;
         for (let i = this.gameScreen.elementArray.length - 1; i > -1; i--) {
@@ -170,6 +173,7 @@ class ElementSelection {
         this.checkAllCorrect();
     }
 
+    //If compare was succssefull it starts the next round, if not - a new game
     checkAllCorrect() {
         this.allCorrect = true;
         for (let i = this.gameScreen.elementArray.length - 1; i > -1; i--) {

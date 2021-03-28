@@ -19,12 +19,14 @@ let gameHandler = new GameHandler(GAME_WIDTH, GAME_HEIGHT, start, eventHandler, 
 function update(delta) {
     gameHandler.update(delta);
 
+    //Starts new game after game over
     if (elementSelection.gameOver) {
         gameScreen = new GameScreen(GAME_WIDTH, GAME_HEIGHT);
         elementSelection = new ElementSelection(GAME_WIDTH, GAME_HEIGHT, eventHandler, gameScreen);
         gameHandler = new GameHandler(GAME_WIDTH, GAME_HEIGHT, start, eventHandler, gameScreen, elementSelection);
         gameOverlay = new GameOverlay(GAME_WIDTH, GAME_HEIGHT, elementSelection, gameScreen)
     }
+    //Starts the next round after succssefully finishing the last round
     if (elementSelection.nextRound) {
         gameScreen = new GameScreen(GAME_WIDTH, GAME_HEIGHT);
         elementSelection = new ElementSelection(GAME_WIDTH, GAME_HEIGHT, eventHandler, gameScreen);
@@ -46,7 +48,6 @@ function draw(interpolationPercentage) {
 }
 
 function end(fps, panic) {
-    //fpsCounter.textContent = Math.round(fps) + ' FPS';
     if (panic) {
         var discardedTime = Math.round(MainLoop.resetFrameDelta());
         console.warn('Main loop panicked, probably because the browser tab was put in the background. Discarding ' + discardedTime + 'ms');

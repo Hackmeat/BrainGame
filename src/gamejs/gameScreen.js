@@ -10,10 +10,9 @@ class GameScreen {
         this.startCountdown = true;
         this.drawCountdown = true;
         this.hasStarted = false;
-
         this.countdown = 3;
 
-        //#
+        //
         this.objectAmount = 4;
         this.colorAmount = 5;
         this.elementCreated = false;
@@ -105,6 +104,7 @@ class GameScreen {
         console.log(this.elementArray)
     }
 
+    //Opens the selction tab after all objects dropped out of the window
     droppingElementUpdate(delta) {
         for (let element of this.elementArray) {
             this.allArrived = true;

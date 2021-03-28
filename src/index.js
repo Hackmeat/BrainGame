@@ -1,3 +1,5 @@
+//Generated
+
 const { app, BrowserWindow, Menu } = require('electron');
 Menu.setApplicationMenu(false);
 const path = require('path');

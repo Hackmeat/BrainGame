@@ -25,6 +25,7 @@ class Start {
         this.startButtonUpdate();
     }
 
+    //Creating the start button
     startButtonDraw(ctx) {
         let width = this.startButtonWidth;
         let height = this.startButtonHeight;
@@ -36,6 +37,7 @@ class Start {
         ctx.fillText("START", this.gameWidth / 2 - 63, this.gameHeight / 2 + 20);
     }
 
+    //Hover / mice detection
     startButtonUpdate() {
         let mouseX = this.eventHandler.mouseX;
         let mouseY = this.eventHandler.mouseY;
@@ -51,6 +53,7 @@ class Start {
         }
     }
 
+    //A rounded button
     roundedButton(x, y, w, h, color, ctx) {
         var mx = x + w / 2;
         var my = y + h;

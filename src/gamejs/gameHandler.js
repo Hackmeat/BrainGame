@@ -9,6 +9,7 @@ class GameHandler {
         this.elementSelection = elementSelection;
     }
 
+    //Collected some of the draw functions for an easier overview
     draw(ctx, interpolationPercentage) {
         if (!this.start.gameRunning) {
             this.start.draw(ctx, interpolationPercentage);
@@ -19,6 +20,7 @@ class GameHandler {
         }
     }
 
+    //Same with the updates
     update(delta) {
         if (!this.start.gameRunning) {
             this.start.update(delta);
