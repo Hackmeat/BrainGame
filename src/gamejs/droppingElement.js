@@ -55,6 +55,8 @@ class DroppingElement {
         this.elementSet = true;
         ctx.drawImage(document.getElementById(this.element), this.x, y, 75, 75);
 
+
+        //Old Version
         /*
                 switch (this.objectID) {
                     case 1:

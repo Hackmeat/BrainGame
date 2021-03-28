@@ -23,7 +23,7 @@ class ElementSelection {
 
     draw(ctx, interpolationPercentage) {
         this.drawSelectionTab(ctx, this.gameWidth / 2, this.gameHeight / 2, this.objectAmount);
-        this.drawObjectSlection(ctx, this.gameWidth / 2, this.gameHeight / 2, this.objectAmount);
+        this.drawObjectSelection(ctx, this.gameWidth / 2, this.gameHeight / 2, this.objectAmount);
 
         this.drawSelectionTab(ctx, this.gameWidth / 2, this.gameHeight / 2 + 200, this.colorAmount);
         if (this.clickOne) {
@@ -56,7 +56,7 @@ class ElementSelection {
         }
     }
 
-    drawObjectSlection(ctx, x, y, amount) {
+    drawObjectSelection(ctx, x, y, amount) {
         let size = 100;
         let element = "";
         x -= amount / 2 * size;
